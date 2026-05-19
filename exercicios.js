@@ -27,4 +27,22 @@ const produtosCaros = produtos.filter(produto => produto.preco > 50);
 
 console.log(produtos, produtosCaros);
 
-//3.
+//3. Trabalhando com objetos: Exiba na tela os valores de um objeto
+const pessoa = {
+    nome: 'Carlos',
+    idade: 28,
+    profissao: 'Engenheiro'
+}
+console.log(`Meu nome é ${pessoa.nome}, tenho ${pessoa.idade} anos e sou ${pessoa.profissao}.`);
+
+//4. Somando itens com reduce: Calculando a soma de valores de objetos usando o método reduce.
+
+const carrinho = [
+    {produto: 'Bola', preco: 29.90},
+    {produto: 'Lápis', preco: 6.90},
+    {produto: 'Caderno', preco: 39.90}
+];
+
+const total = carrinho.reduce((acumulador, item) => acumulador + item.preco, 0)
+
+console.log(total)
