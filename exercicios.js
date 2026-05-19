@@ -46,3 +46,19 @@ const carrinho = [
 const total = carrinho.reduce((acumulador, item) => acumulador + item.preco, 0)
 
 console.log(total)
+
+//5. Desestruturação de Objetos com Valores Padrão e Rest Operator: Extraindo valores de um objeto, atribuindo valores padrão e coletando o restante dos dados.
+
+const usuario = {
+    nome: 'Valter', idade: 27
+}
+
+const { nome } = usuario
+const { idade } = usuario
+const { nome, idade, cidade = 'Desconhecida', ...resto } = usuario
+
+const novoUsuario = {
+    nome, cidade, ...resto
+}
+
+console.log(novoUsuario)
