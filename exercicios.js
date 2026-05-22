@@ -62,3 +62,51 @@ const novoUsuario = {
 }
 
 console.log(novoUsuario)
+
+//6. Promises e Async/Await: Criando uma função assíncrona que simula uma operação de restaurante pizzaria utilizando Promise e Async/Await
+
+const deliverPizza = () => {
+  // Criamos uma promessa (Promise)
+  return new Promise((resolve) => {
+    console.log("Pedido da pizza sendo enviado para a cozinha...");
+    
+    setTimeout(() => {
+      resolve("Pizza pronta!"); // A promessa foi cumprida!
+    }, 3000); //intervalo de tempo de 3 segundos.
+  });
+};
+
+const makeOrder = async () => {
+  // O 'await' espera a promessa ser resolvida
+  const pizzaMessage = await deliverPizza(); 
+  console.log(pizzaMessage);
+};
+
+makeOrder();
+
+//7. Try/Catch: Criando uma função que simula um processo de pedido em uma pizzaria lidar com erros.
+
+const deliverPizza = () => {
+    return new Promise((resolve, reject) => {
+        console.log("Pedido da pizza sendo enviado para a cozinha...");
+
+        setTimeout(() => {
+            const sucesso = Math.random() > 0.5; // Simula sucesso ou falha aleatória em 50%
+            if (sucesso) {
+                resolve("Pizza pronta!"); // A promessa foi cumprida!
+            } else {
+                reject("Ocorreu um erro na cozinha. Tente novamente."); // A promessa foi rejeitada!
+            }
+    });
+})};
+
+const makeOrder = async () => {
+    try {
+        const pizzaMessage = await deliverPizza(); 
+        console.log(pizzaMessage);
+    } catch (error) {
+        console.error(error); // Lida com o erro caso a promessa seja rejeitada
+    }
+};
+
+makeOrder();
