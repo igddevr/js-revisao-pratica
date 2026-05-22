@@ -106,6 +106,8 @@ const makeOrder = async () => {
         console.log(pizzaMessage);
     } catch (error) {
         console.error(error); // Lida com o erro caso a promessa seja rejeitada
+    } finally {
+        console.log("Obrigado por pedir conosco!"); // Este bloco será executado independentemente do sucesso ou falha
     }
 };
 
