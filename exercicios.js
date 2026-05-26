@@ -112,3 +112,19 @@ const makeOrder = async () => {
 };
 
 makeOrder();
+
+//8. Fazendo requisição a uma API e exibindo com console.log o email e nome de cada usuário.
+
+// Criando função assíncrona para buscar dados da API
+async function getUserData() {
+    // Fazendo a requisição para a API usando fetch, salvando na variável response
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+    // fazendo conversão dos dados para formato JSON, salvando na variável users
+    const users = await response.json();
+
+    // Iterando sobre os usuários e exibindo nome e email usando forEach que percorre o array, usando interpolação de string para formatar a saída
+    users.forEach(user => {
+        console.log(`Nome: ${user.name}, Email: ${user.email}`);
+    });
+} 
