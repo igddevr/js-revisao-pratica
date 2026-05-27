@@ -128,3 +128,31 @@ async function getUserData() {
         console.log(`Nome: ${user.name}, Email: ${user.email}`);
     });
 } 
+
+//9. Criando uma função que recebe manualmente id de usuário de 1 a 10 buscando em uma API e exibe o nome, email, rua e cidade do usuário correspondente.
+
+async function getUserData(id) {
+
+    // tratamento de erro para garantir que o ID fornecido esteja dentro do intervalo permitido (1 a 10)
+    if (id < 1 || id > 10) {
+        console.error("Erro: Por favor, forneça um ID entre 1 e 10.");
+        return;
+    }
+
+    // Fazendo a requisição para a API usando fetch, salvando na variável response com tratamento de erro para verificar se a resposta foi bem-sucedida. Se não for, lança um erro com a mensagem apropriada.
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+
+        const users = await response.json();
+
+        console.log(`Nome: ${users.name}, E-mail: ${users.email}, Rua: ${users.address.street}, Cidade: ${users.address.city}`);
+    } catch (error) {
+        console.error("Falha ao buscar os dados:", error.message);
+    }
+}
+// Chamando a função com um ID válido para testar
+getUserData(1);
