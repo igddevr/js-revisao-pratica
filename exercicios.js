@@ -156,3 +156,24 @@ async function getUserData(id) {
 }
 // Chamando a função com um ID válido para testar
 getUserData(1);
+
+//10. Listando Posts de uma API, mas limitando a exibição a apenas 5 posts usando o método slice para limitar a quantidade de posts exibidos.
+
+async function getPosts() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+    if (!response.ok) {
+        throw new Error(`Erro na requisição: ${response.status}`);
+    }
+
+    const posts = await response.json();
+
+    const limitedPosts = posts.slice(0, 5); // Limita a exibição aos primeiros 5 posts
+
+    // Itera sobre cada post dentro do array limitado pelo slice acima e exibe o título e conteúdo de cada post usando console.log, formatando a saída com interpolação de string para melhor legibilidade.
+    limitedPosts.forEach(post => {
+        console.log(`Título: ${post.title}\nConteúdo: ${post.body}\n`);
+    });
+}
+
+getPosts();
